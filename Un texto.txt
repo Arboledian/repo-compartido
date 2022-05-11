@@ -3,3 +3,11 @@ Que se puede leer y escribir
 bueno aveces me vai a tener que enviar weas pa que yo las suba asi el profe dice este weon si trabajo ASLKDJASd
 LMAOOOOOOOOOOOOOOOO
 Enfin
+
+
+git init
+git add .
+git commit -m"mensaje"
+git remote add origin *linkdelgithub*
+git branch -m main
+git push -u origin main
