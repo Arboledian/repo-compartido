@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -31,98 +32,99 @@
 
     <table>
         <tr>
-            <th>Nombre De Utilès</th>
+            <th>Nombre De Útiles</th>
         </tr>
         <tbody id="utiles">
         </tbody>
     </table>
 
     <script>
-var app = new function() {
-  this.el = document.getElementById('utiles');
-  this.ùtiles = ['mopa', 'escoba', 'cloro', 'guantes', 'paño', 'balde'];
-  this.Count = function(data) {
-    var el   = document.getElementById('aseo');
-    var name = 'aseo';
-    if (data) {
-      if (data > 1) {
-        name = 'utiles';
-      }
-      el.innerHTML = data + ' ' + name ;
-    } else {
-      el.innerHTML = 'No ' + name;
-    }
-  };
 
-  this.FetchAll = function() {
-    var data = '';
-    if (this.utiles.length > 0) {
-      for (i = 0; i < this.utiles.length; i++) {
-        data += '<tr>';
-        data += '<td>' + this.utiles[i] + '</td>';
-        data += '<td><button onclick="app.Edit(' + i + ')">Edit</button></td>';
-        data += '<td><button onclick="app.Delete(' + i + ')">Delete</button></td>';
-        data += '</tr>';
-      }
-    }
-    this.Count(this.utiles.length);
-    return this.el.innerHTML = data;
-  };
-  this.Add = function () {
-    el = document.getElementById('add-name');
-    // Get the value
-    var aseo = el.value;
-    if (aseo) {
-      // Add the new value
-      this.countries.push(aseo.trim());
-      // Reset input value
-      el.value = '';
-      // Dislay the new list
-      this.FetchAll();
-    }
-  };
-  this.Edit = function (item) {
-    var el = document.getElementById('edit-name');
-    // Display value in the field
-    el.value = this.utiles[item];
-    // Display fields
-    document.getElementById('spoiler').style.display = 'block';
-    self = this;
-    document.getElementById('saveEdit').onsubmit = function() {
-      // Get value
-      var aseo = el.value;
-      if (aseo) {
-        // Edit value
-        self.utiles.splice(item, 1, aseo.trim());
+    var app = new function() {
+      this.el = document.getElementById('utiles');
+      this.utiles = ['mopa', 'escoba', 'cloro', 'guantes', 'paño', 'balde'];
+      this.Count = function(data) {
+        var el   = document.getElementById('aseo');
+        var name = 'aseo';
+        if (data) {
+          if (data > 1) {
+            name = 'utiles';
+          }
+          el.innerHTML = data + ' ' + name ;
+        } else {
+          el.innerHTML = 'No ' + name;
+        }
+      };
+
+      this.FetchAll = function() {
+        var data = '';
+        if (this.utiles.length > 0) {
+          for (i = 0; i < this.utiles.length; i++) {
+            data += '<tr>';
+            data += '<td>' + this.utiles[i] + '</td>';
+            data += '<td><button onclick="app.Edit(' + i + ')">Edit</button></td>';
+            data += '<td><button onclick="app.Delete(' + i + ')">Delete</button></td>';
+            data += '</tr>';
+          }
+        }
+        this.Count(this.utiles.length);
+        return this.el.innerHTML = data;
+      };
+      this.Add = function () {
+        el = document.getElementById('add-name');
+        // Get the value
+        var aseo = el.value;
+        if (aseo) {
+          // Add the new value
+          this.utiles.push(aseo.trim());
+          // Reset input value
+          el.value = '';
+          // Dislay the new list
+          this.FetchAll();
+        }
+      };
+      this.Edit = function (item) {
+        var el = document.getElementById('edit-name');
+        // Display value in the field
+        el.value = this.utiles[item];
+        // Display fields
+        document.getElementById('spoiler').style.display = 'block';
+        self = this;
+        document.getElementById('saveEdit').onsubmit = function() {
+          // Get value
+          var aseo = el.value;
+          if (aseo) {
+            // Edit value
+            self.utiles.splice(item, 1, aseo.trim());
+            // Display the new list
+            self.FetchAll();
+            // Hide fields
+            CloseInput();
+          }
+        }
+      };
+      this.Delete = function (item) {
+        // Delete the current row
+        this.utiles.splice(item, 1);
         // Display the new list
-        self.FetchAll();
-        // Hide fields
-        CloseInput();
-      }
-    }
-  };
-  this.Delete = function (item) {
-    // Delete the current row
-    this.utiles.splice(item, 1);
-    // Display the new list
-    this.FetchAll();
-  };
+        this.FetchAll();
+      };
 
-}
-app.FetchAll();
-function CloseInput() {
-  document.getElementById('spoiler').style.display = 'none';
-}
-         //Sobre javascript:void(0), esta función al ejecutarse devuelve un valor undefined, eso quiere decir que al ejecutarse el codigo no retorna ningun resultado.
+    }
+    app.FetchAll();
+    function CloseInput() {
+      document.getElementById('spoiler').style.display = 'none';
+    }
+    //Sobre javascript:void(0), esta función al ejecutarse devuelve un valor undefined, eso quiere decir que al ejecutarse el codigo no retorna ningun resultado.
     //esto sirve para evitar interacciones indeseadas en la página. Ejemplo haciendo que un boton en vez de redigir a otro link directamente ejecute el void(0) y no haga nada más
-    
-    //Sobre Fetch, es un método que le pide una información al servidor y esta es enviada a la página, la información que retorna el método Fetch es una promesa y esta información es de formato JSON o XML
-    
-    //Sobre app.ADD(), la función .ADD() agrega datos a una variable, en este caso la variable es app por lo tanto la información es agregada a la variable app.
-        
-    //poner comentarios sobre: Fetch, app.ADD, javascript:void(0)
+
+    //Sobre Fetch, es un método que le pide una información al servidor y esta es enviada a la página,
+    //la información que retorna el método Fetch es una promesa y esta información es de formato JSON o XML
+
+    //Sobre app.Add(), la función .Add() agrega datos a una variable, en este caso la variable es app por lo tanto la información es agregada a la variable app.
+
     </script>
-    
-   
+
+
 </body>
 </html>
