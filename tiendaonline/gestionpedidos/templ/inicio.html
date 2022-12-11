@@ -1,0 +1,82 @@
+<html>
+    <head>
+    <title> Inicio </title>
+         <link rel="shortcut icon" href="icon.png">
+          <style>
+                     /*#region CSS*/
+            body {
+    background-color: rgb(10, 10, 40);
+    background-image: url("https://images3.alphacoders.com/127/1270683.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+
+}
+
+
+div {
+    text-align: center;
+    color: white;
+    border-style: groove;
+    border-color: white;
+    font-family: 'Koulen', cursive;
+    width:80%;
+    height:25%;
+    padding: initial;
+    right: 50%;
+    bottom: 60%;
+    transform: translate(50%,50%);
+    position: absolute;
+    
+
+}
+              div2 {
+                  text-align: center;
+                  color: white;
+                  border-style: groove;
+                  border-color: white;
+                  font-family: 'Koulen', cursive;
+                  width: 50%;
+                  height: 20%;
+                  padding: initial;
+                  right: 50%;
+                  bottom: 88%;
+                  transform: translate(50%,50%);
+                  position: absolute;
+              }
+              input {
+                  background-color: rgb(15, 15, 10);
+                  text-align: center;
+                  color: white;
+                  border-style: groove;
+                  border-color: white;
+                  font-family: 'Koulen', cursive;
+                  float: center;
+
+                  font-size: 15px;
+                  padding:initial;
+
+              }
+
+
+/*#region CSS*/
+        </style>
+</head>
+    <body>
+        <div>
+            <h1>Test Form</h1>
+            <form method="post" action="">
+                {% csrf_token%}
+                {{ elform }}
+                <input type="submit" value="Registro" />
+            </form>
+        </div>
+        <div2>
+            <h1>Busqueda</h1>
+            <form action="/buscar2/" method="GET">
+                <input type="text" name="nome">
+                <input type="submit" name="Buscar">
+            </form>
+        </div2>
+    </body>
+</html>

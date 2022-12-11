@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>Resultados Busqueda</title>
+    <link rel="shortcut icon" href="icon.png">
+    <style>
+        /*#region CSS*/
+        body {
+            background-color: ghostwhite;
+            background-image: url("https://images5.alphacoders.com/116/1168976.png");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        p {
+            background-color: deeppink;
+            text-align: center;
+            color: black;
+            border-style: groove;
+            border-color: white;
+            margin: 0 auto;
+            font-family: 'Koulen', cursive;
+            float: center position:fixed;
+            width: 50%;
+            padding: auto;
+            right: 50%;
+            bottom: 95%;
+            transform: translate(50%,50%);
+            position: absolute;
+        }
+
+        li {
+            background-color: deepskyblue;
+            text-align: center;
+            color: black;
+            border-style: groove;
+            border-color: white;
+            margin: 10 auto;
+            font-family: 'Koulen', cursive;
+            float: center position:fixed;
+            width: 45%;
+            padding: auto;
+            transform: translateY(100%);
+
+
+        }
+        #int2 {
+            background-color: rgb(15, 15, 10);
+            text-align: center;
+            color: white;
+            border-style: groove;
+            border-color: white;
+            font-family: 'Koulen', cursive;
+            float: center;
+            font-size: 15px;
+            padding: initial;
+        }
+        input {
+            border-style: groove;
+            border-color: white;
+            padding: initial;
+        }
+        /*#region CSS*/
+    </style>
+
+</head>
+<body>
+
+    <p>Esta buscando: <strong>{{query}}</strong></p>
+    {% block content %}
+    <form action="/inicio/" method="GET">
+        <input type="submit" name="volver" , value="Volver">
+    </form>
+    {% if registrado %}
+
+    <p>Users encontrados: {{registrado|length}} usernames</p>
+
+    <ul>
+        {% for user in registrado %}
+        <li>
+            <!-- {{user.id}} &nbsp; --> 
+            {{user.nombre}} &nbsp; {{user.email}}
+            <form action="/delete/{{user.id}}" method="GET">
+                <input  type="submit" name="eliminar" , value="Eliminar">
+            </form>
+            <form action="/update/{{user.id}}" method="GET">
+                <input id="int2" type="text" name="name">
+                <input id="int2" type="submit" name="cambiar", value="Cambiar nombre">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No se han encontrado usuarios</p>
+    {% endif %}
+    {% endblock content %}
+
+</body> 
+
+</html>

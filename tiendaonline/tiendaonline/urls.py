@@ -16,12 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from gestionpedidos import views
-from appadmin import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('inicio/', views.inicio , name='inicio'),
     path('busqueda_productos/', views.busqueda_productos),
     path('buscar/', views.buscar),
-    path('inicio/', views.inicio , name='inicio'),
+    path('buscar2/', views.buscar2),
+    path('delete/<int:id>', views.delete, name='delete'),
+    path('update/<int:id>', views.update, name='update'),
+
+    
 
 ]
